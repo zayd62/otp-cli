@@ -14,7 +14,7 @@
 
 # otp-cli
 
-> generate otp codes through the CLI
+> Generate otp codes using the CLI!
 
 A longer description of your project goes here...
 
