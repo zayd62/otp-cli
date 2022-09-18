@@ -1,6 +1,6 @@
 import pytest
 
-from otp_cli.skeleton import fib, main
+from otp_cli.cli import fib, main
 
 __author__ = "zayd"
 __copyright__ = "zayd"
