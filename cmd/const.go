@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
 	"strings"
 
@@ -32,8 +31,6 @@ func generateTable(validImportTypeArray []string, validImportTypeArrayDescriptio
 		})
 	}
 
-	fmt.Println(width)
-
 	table.SetColWidth((width / 2))
 	table.Render()
 	return tableString.String()
@@ -45,7 +42,8 @@ var validImportTypeArray = []string{
 }
 var validImportTypeArrayDescription = []string{
 	"A single otpauth URI",
-	"A file where each line contains an otpauth URI.",
+	"A path to a file where each line contains an otpauth URI.",
 }
 
+// a table that contains the valid types for import
 var importHelpTable = generateTable(validImportTypeArray, validImportTypeArrayDescription)
