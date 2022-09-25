@@ -3,6 +3,7 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"zayd62/otp-cli/lib"
 
 	"github.com/spf13/cobra"
 )
@@ -27,6 +28,7 @@ var importCmd = &cobra.Command{
 		switch importTypeParsed {
 		case "otpauth-uri":
 			fmt.Println("found otpauth-uri")
+			lib.ParseOTPAuthURI(importPathParsed)
 		case "otpauth-file":
 			fmt.Println("found otpauth-file")
 		default:
