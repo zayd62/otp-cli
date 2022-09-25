@@ -29,11 +29,26 @@ var addCmd = &cobra.Command{
 		switch addTypeParsed {
 		case "otpauth-uri":
 			fmt.Println("found otpauth-uri")
-			otpstruct, err := lib.ParseOTPAuthURI(addPathParsed)
+
+			flag := cmd.Flag("config")
+			configFileLocation := flag.Value.String()
+			fmt.Println(configFileLocation)
+
+			otpStruct, err := lib.ParseOTPAuthURI(addPathParsed)
 			if err != nil {
 				fmt.Println(err)
 				os.Exit(1)
 			}
+
+			fmt.Println(otpStruct)
+
+			successfulWrite, err := lib.WriteToConfig(otpStruct, configFileLocation)
+			if err != nil {
+				fmt.Println(err)
+				os.Exit(1)
+			}
+			fmt.Println(successfulWrite)
+
 		case "otpauth-file":
 			fmt.Println("found otpauth-file")
 		default:
