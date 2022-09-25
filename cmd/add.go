@@ -17,7 +17,7 @@ var addCmd = &cobra.Command{
 	Short: addShortHelp,
 	Long: addShortHelp + `The add commands take two arguments, the TYPE that you are adding and the PATH. The TYPE is the OTP input format and the PATH is where you can find the type to add. The details for the types and their paths can be found in the table below:
 
-` + addHelpTable + " \nNote that you should only need to use the add command when initalising. To add new otp-codes, use the \"add\" command instead",
+` + addHelpTable,
 	Args:    cobra.ExactArgs(2),
 	Example: "  otp-cli add TYPE PATH",
 	RunE: func(cmd *cobra.Command, args []string) error {
