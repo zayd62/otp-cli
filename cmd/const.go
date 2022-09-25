@@ -8,7 +8,7 @@ import (
 	"golang.org/x/term"
 )
 
-func generateTable(validImportTypeArray []string, validImportTypeArrayDescription []string) string {
+func generateTable(validaddTypeArray []string, validaddTypeArrayDescription []string) string {
 
 	var tableString = &strings.Builder{}
 	var table = tablewriter.NewWriter(tableString)
@@ -24,10 +24,10 @@ func generateTable(validImportTypeArray []string, validImportTypeArrayDescriptio
 	// https://github.com/olekukonko/tablewriter/issues/86
 	// tablewriter.WrapString()
 	table.SetHeader(tableHeaders)
-	for i := 0; i < len(validImportTypeArray); i++ {
+	for i := 0; i < len(validaddTypeArray); i++ {
 		table.Append([]string{
-			validImportTypeArray[i],
-			validImportTypeArrayDescription[i],
+			validaddTypeArray[i],
+			validaddTypeArrayDescription[i],
 		})
 	}
 
@@ -36,14 +36,14 @@ func generateTable(validImportTypeArray []string, validImportTypeArrayDescriptio
 	return tableString.String()
 }
 
-var validImportTypeArray = []string{
+var validaddTypeArray = []string{
 	"otpauth-uri",
 	"otpauth-file",
 }
-var validImportTypeArrayDescription = []string{
+var validaddTypeArrayDescription = []string{
 	"A single otpauth URI",
 	"A path to a file where each line contains an otpauth URI.",
 }
 
-// a table that contains the valid types for import
-var importHelpTable = generateTable(validImportTypeArray, validImportTypeArrayDescription)
+// a table that contains the valid types for add
+var addHelpTable = generateTable(validaddTypeArray, validaddTypeArrayDescription)
