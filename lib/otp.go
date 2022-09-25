@@ -19,12 +19,26 @@ func ParseOTPAuthURI(otpauthURI string) (OTPStruct, error) {
 		fmt.Println(err)
 		return OTPStruct{}, err
 	}
-	otpStruct := OTPStruct{
-		u.Host,
-		Label{
+
+	uriList := strings.Split(strings.TrimLeft(u.Path, "/"), ":")
+
+	var parsedLabel Label
+
+	if len(uriList) == 2 {
+		parsedLabel = Label{
 			strings.Split(strings.TrimLeft(u.Path, "/"), ":")[0],
 			strings.Split(strings.TrimLeft(u.Path, "/"), ":")[1],
-		},
+		}
+	} else {
+		parsedLabel = Label{
+			strings.Split(strings.TrimLeft(u.Path, "/"), ":")[0],
+			"",
+		}
+	}
+
+	otpStruct := OTPStruct{
+		u.Host,
+		parsedLabel,
 		u.Query().Get("secret"),
 		u.Query().Get("issuer"),
 	}
